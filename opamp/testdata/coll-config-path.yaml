@@ -11,8 +11,10 @@ processors:
 receivers:
     otlp:
         protocols:
-            grpc: null
-            http: null
+            grpc:
+                endpoint: localhost:0
+            http:
+                endpoint: localhost:0
 service:
     extensions:
         - zpages
@@ -32,5 +34,7 @@ service:
             receivers:
                 - otlp
     telemetry:
+        metrics:
+            level: "none"
         resource:
             service.instance.id: opamp/testdata/coll-config-path.yaml

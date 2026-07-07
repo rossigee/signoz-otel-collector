@@ -2,7 +2,9 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: localhost:0
       http:
+        endpoint: localhost:0
 processors:
   batch:
     send_batch_size: 1000
@@ -23,5 +25,7 @@ service:
       processors: [batch]
       exporters: [debug]
   telemetry:
+      metrics:
+          level: "none"
       resource:
           service.instance.id: "signozcol/testdata/config.yaml"

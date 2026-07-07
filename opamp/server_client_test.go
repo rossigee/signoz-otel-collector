@@ -16,9 +16,6 @@ import (
 )
 
 func TestNewClient(t *testing.T) {
-	// FIXME(srikanthccv): this test interferes with other tests that use the same port.
-	// Remove the sleep and find a better way to fix this.
-	time.Sleep(5 * time.Second)
 	srv := StartMockServer(t)
 	t.Cleanup(func() { srv.Close() })
 
