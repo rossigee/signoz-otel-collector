@@ -10,11 +10,15 @@ processors:
     send_batch_size: 1000
     timeout: 10s
 extensions:
-  zpages: {}
+  zpages:
+    endpoint: localhost:0
 exporters:
-  debug:
+  debug: null
 service:
   extensions: [zpages]
+  telemetry:
+    metrics:
+      level: none
   pipelines:
     traces:
       receivers: [otlp]
